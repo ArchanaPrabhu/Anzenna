@@ -1,0 +1,53 @@
+{% import "bootstrap/wtf.html" as wtf %}
+{% extends "baseDestino.html" %}
+{% block title %}Login{% endblock %}
+{% block body %}
+
+<div class="find">
+		<!-- Image by https://unsplash.com/@garciasaldana_ -->
+		<div class="find_background_container prlx_parent">
+			<div class="find_background prlx" style="background-image:url(http://127.0.0.1:5000/static/images/find.jpg)"></div>
+		</div>
+		<!-- <div class="find_background parallax-window" data-parallax="scroll" data-image-src="images/find.jpg" data-speed="0.8"></div> -->
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="find_title text-center">Login</div>
+				</div>
+				<div class="col-12">
+				{{ wtf.quick_form(form) }}
+				</div>
+			</div>
+		</div>
+	</div>
+
+<style>
+	.control-label {
+	color:white;
+	}
+
+	.form-group {
+	left:36%;
+	top:50%;
+	position:relative;
+	}
+	.form-control {
+	width:29%;
+	}
+	#submit {
+	position:relative;
+	left:46%;
+	}
+
+</style>
+
+<script src="static/js/jquery-3.2.1.min.js"></script>
+<script src="static/styles/bootstrap4/popper.js"></script>
+<script src="static/styles/bootstrap4/bootstrap.min.js"></script>
+<script src="static/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+<script src="static/plugins/easing/easing.js"></script>
+<script src="static/plugins/parallax-js-master/parallax.min.js"></script>
+<script src="static/plugins/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script src="static/js/custom.js"></script>
+
+{% endblock %}

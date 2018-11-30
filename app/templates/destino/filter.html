@@ -1,0 +1,166 @@
+{% import "bootstrap/utils.html" as utils %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% extends "baseDestino.html" %}
+{% block title %}Travels{% endblock %}
+{% block body %}
+
+<link rel="stylesheet" type="text/css" href="http://127.0.0.1:5000/static/styles/main_styles.css">
+<link rel="stylesheet" type="text/css" href="http://127.0.0.1:5000/static/styles/responsive.css">
+
+<div class="find">
+		<!-- Image by https://unsplash.com/@garciasaldana_ -->
+		<div class="find_background_container prlx_parent">
+			<div class="find_background prlx" style="background-image:url(http://127.0.0.1:5000/static/images/find.jpg)"></div>
+		</div>
+		<!-- <div class="find_background parallax-window" data-parallax="scroll" data-image-src="images/find.jpg" data-speed="0.8"></div> -->
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="find_title text-center">Search</div>
+				</div>
+				<div class="col-12">
+				{{ wtf.quick_form(form) }}
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Offers -->
+<div class="offers">
+	<div class="container">
+		<div class="row">
+			<div class="col">
+
+				<div class="section_title text-center">
+					<h2>Top destinations</h2>
+					<div>take a look at these offers</div>
+				</div>
+			</div>
+		</div>
+
+		{% if travels %}
+		<div class="row">
+			<div class="col">
+				<div class="items item_grid clearfix">
+
+					<!-- Item -->
+					{% for travel in travels %}
+
+				<div class="item clearfix rating_5">
+							<div class="item_image"><img src= "{{ 'http://127.0.0.1:5000/static/images/popular_' + ((range(1,8)|random)|string) +'.jpg' }}"/></div>
+							<div class="item_content">
+								<div class="item_price">Rs. {{ travel.amount }} </div>
+								<div class="item_title">{{ travel.travel_name }} </div>
+
+								<ul>
+                                    <li>{{ ((travel.start_date)|string).split(' ')[0] }} </li>
+
+									<li> {{ travel.special_attraction }}</li>
+
+								</ul>
+								<div class="item_price"> {{ travel.duration }} days</div>
+								<div class="item_price"> {{ travel.location}} </div>
+								<div class="rating rating_5" data-rating="5">
+									{% for star in range(((range(1,5)|random)|int)) %}
+									<i class="fa fa-star"></i>
+									{% endfor %}
+								</div>
+								<div class=item_price">{{(categ.filter_by(cat_id=travel.cat_id).first()).cat_name}} </div>
+
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% else %}
+<div class="offers">
+	<h2>No travel plans yet</h2> </div>
+{% endif %}
+
+
+<style>
+
+.detail_view i
+{
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+}
+.detail_view:hover i
+{
+	color: #fe3c52;
+}
+.box_view
+{
+	font-size: 20px;
+	float: left;
+	cursor: pointer;
+}
+.box_view i
+{
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+}
+.box_view:hover i
+{
+	color: #fe3c52;
+}
+.pages
+{
+	margin-top: 49px;
+}
+.page
+{
+	display: inline-block;
+}
+.page a
+{
+	font-size: 15px;
+	font-weight: 400;
+	color: #131a2f;
+}
+.page.active a
+{
+	color: #fe3c52;
+}
+.special {
+display:none;
+}
+.home {
+height:360px;
+}
+.home_content {
+display:none;
+}
+
+.form-control {
+	color:black;
+	}
+.control-label {
+	color:white;
+	}
+
+	.form-group {
+	left:36%;
+	top:50%;
+	position:relative;
+	}
+	.form-control {
+	width:29%;
+	}
+	#submit {
+	position:relative;
+	left:46%;
+	}
+	.form-control {
+	color:black;
+	}</style>
+
+{% endblock %}

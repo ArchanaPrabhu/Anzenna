@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>{{ title }} </title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Destino project">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="{{ url_for('static',filename='styles/bootstrap4/bootstrap.min.css') }}" rel="stylesheet">
+<link href="{{ url_for('static',filename='plugins/font-awesome-4.7.0/css/font-awesome.min.css') }}" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='plugins/OwlCarousel2-2.2.1/owl.carousel.css') }}">
+<link rel="stylesheet" type="text/css" href=" {{ url_for('static',filename='plugins/OwlCarousel2-2.2.1/owl.theme.default.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='plugins/OwlCarousel2-2.2.1/animate.css') }}">
+<link href="{{ url_for('static', filename ='plugins/magnific-popup/magnific-popup.css')}}" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename ='styles/main_styles.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename = 'styles/responsive.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename ='styles/offers_styles.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/offers_responsive.css') }}">
+
+
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'styles/news_styles.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'styles/news_responsive.css') }} ">
+
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/elements_styles.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/elements_responsive.css') }}">
+
+</head>
+<body>
+
+<div class="super_container">
+
+	<!-- Header -->
+
+	<header class="header">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="header_container d-flex flex-row align-items-center justify-content-start">
+
+						<!-- Logo -->
+						<div class="logo_container">
+							<div class="logo">
+								<div>An'zenna</div>
+								<div>Advancing security socially</div>
+								<div class="logo_image"><img src="http://127.0.0.1:5000/static/images/logo.png" alt=""></div>
+							</div>
+						</div>
+
+						<!-- Main Navigation -->
+						<nav class="main_nav ml-auto">
+							<ul class="main_nav_list">
+								<li class="main_nav_item"><a href="{{ url_for('home.homepage') }}">Home</a></li>
+
+								{% if current_user.is_authenticated %}
+								<li class="main_nav_item"><a href="{{ url_for('home.googlemaps') }}">Recent Anomalies </a></li>
+								<li class="main_nav_item"><a href="{{ url_for('auth.logout') }}">Logout</a></li>
+								{% else %}
+								<li class="main_nav_item"><a href="{{ url_for('auth.register') }}">Register</a></li>
+								<li class="main_nav_item"><a href="{{ url_for('auth.login') }}">Login</a></li>
+							</ul>
+							 {% endif %}
+						</nav>
+
+						<!-- Search -->
+						<div class="search">
+							<form action="#" class="search_form">
+								<input type="search" name="search_input" class="search_input ctrl_class" required="required" placeholder="Keyword">
+								<button type="submit" class="search_button ml-auto ctrl_class"><img src="http://127.0.0.1:5000/static/images/search.png" alt=""></button>
+							</form>
+						</div>
+
+						<!-- Hamburger -->
+						<div class="hamburger ml-auto"><i class="fa fa-bars" aria-hidden="true"></i></div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<!-- Menu -->
+
+	<div class="menu_container menu_mm">
+
+		<!-- Menu Close Button -->
+		<div class="menu_close_container">
+			<div class="menu_close"></div>
+		</div>
+
+		<!-- Menu Items -->
+		<div class="menu_inner menu_mm">
+			<div class="menu menu_mm">
+				<div class="menu_search_form_container">
+					<form action="#" id="menu_search_form">
+						<input type="search" class="menu_search_input menu_mm">
+						<button id="menu_search_submit" class="menu_search_submit" type="submit"><img src="http://127.0.0.1:5000/static/images/search_2.png" alt=""></button>
+					</form>
+				</div>
+				<ul class="menu_list menu_mm">
+					<li class="menu_item menu_mm"><a href="#">Home</a></li>
+					<li class="menu_item menu_mm"><a href="about.html">About us</a></li>
+					<li class="menu_item menu_mm"><a href="offers.html">Offers</a></li>
+					<li class="menu_item menu_mm"><a href="news.html">News</a></li>
+					<li class="menu_item menu_mm"><a href="contact.html">Contact</a></li>
+				</ul>
+
+				<!-- Menu Social -->
+
+				<div class="menu_social_container menu_mm">
+					<ul class="menu_social menu_mm">
+						<li class="menu_social_item menu_mm"><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+						<li class="menu_social_item menu_mm"><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+						<li class="menu_social_item menu_mm"><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+						<li class="menu_social_item menu_mm"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+						<li class="menu_social_item menu_mm"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+					</ul>
+				</div>
+
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<!-- Home -->
+
+	<div class="home">
+		<div class="home_background" style="background-image:url(http://127.0.0.1:5000/static/images/background-img.jpg); text-align:center"></div>
+		<div class="home_content" style="margin-top:-21%">
+			<div class="home_content_inner">
+		</div>
+	</div>
+    </div>
+
+
+	<!-- Find Form -->
+	  {% block body %}
+      {% endblock %}
+
+
+	<!-- Top Destinations -->
+
+
+	<!-- Last -->
+
+
+	<!-- Video -->
+
+	<!-- Special -->
+
+
+	<!-- Footer -->
+
+</div>
+
+<script src="http://127.0.0.1:5000/static/js/jquery-3.2.1.min.js"></script>
+<script src="http://127.0.0.1:5000/static/styles/bootstrap4/popper.js"></script>
+<script src="http://127.0.0.1:5000/static/styles/bootstrap4/bootstrap.min.js"></script>
+<script src="http://127.0.0.1:5000/static/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+<script src="http://127.0.0.1:5000/static/plugins/easing/easing.js"></script>
+<script src="http://127.0.0.1:5000/static/plugins/parallax-js-master/parallax.min.js"></script>
+<script src="http://127.0.0.1:5000/static/plugins/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script src="http://127.0.0.1:5000/static/js/custom.js"></script>
+
+<script src="http://127.0.0.1:5000/static/plugins/greensock/TweenMax.min.js"></script>
+<script src="http://127.0.0.1:5000/static/plugins/greensock/TimelineMax.min.js"></script>
+<script src="http://127.0.0.1:5000/static/plugins/scrollmagic/ScrollMagic.min.js"></script>
+<script src="http://127.0.0.1:5000/static/plugins/greensock/animation.gsap.min.js"></script>
+<script src="http://127.0.0.1:5000/static/plugins/greensock/ScrollToPlugin.min.js"></script>
+<script src="http://127.0.0.1:5000/static/plugins/progressbar/progressbar.min.js"></script>
+</body>
+</html>

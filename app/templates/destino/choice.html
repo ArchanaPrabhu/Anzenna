@@ -1,0 +1,247 @@
+
+
+<link href="//fonts.googleapis.com/css?family=Poppins:300,400,500,700" rel="stylesheet">
+        <div class="grid">
+                                <div class="cell">
+                                    <div class="content">
+                                        <video webkit-playsinline playsinline muted loop>
+                                            <source src="http://127.0.0.1:5000/static/sample_video.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                                <div class="cell">
+                                    <div class="content">
+                                        <video webkit-playsinline playsinline muted loop>
+                                            <source src="https://storage.googleapis.com/gweb-ai-experiments.appspot.com/8638-quickdraw_bike_161114b.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                                <div class="cell">
+                                    <div class="content">
+                                        <video webkit-playsinline playsinline muted loop>
+                                            <source src="https://storage.googleapis.com/gweb-ai-experiments.appspot.com/3645-drums%2001%20(H).mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                                <div class="cell">
+                                    <div class="content">
+                                        <video webkit-playsinline playsinline muted loop>
+                                            <source src="https://storage.googleapis.com/gweb-ai-experiments.appspot.com/1304-thing%20translator%2001%20(H).mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                                <div class="cell">
+                                    <div class="content">
+                                        <video webkit-playsinline playsinline muted loop>
+                                            <source src="https://storage.googleapis.com/gweb-ai-experiments.appspot.com/3778-birds01%20(H).mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                                <div class="cell">
+                                    <div class="content">
+                                        <video webkit-playsinline playsinline muted loop>
+                                            <source src="https://storage.googleapis.com/gweb-ai-experiments.appspot.com/9865-ai-duet%20(1).mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                                <div class="cell">
+                                    <div class="content">
+                                        <video webkit-playsinline playsinline muted loop>
+                                            <source src="https://storage.googleapis.com/gweb-ai-experiments.appspot.com/7068-vhds.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                                <div class="cell">
+                                    <div class="content">
+                                        <video webkit-playsinline playsinline muted loop>
+                                            <source src="https://storage.googleapis.com/gweb-ai-experiments.appspot.com/7838-neural%2004.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+
+
+    <style>
+        body {
+            background-color:black;
+        }
+*,:before,:after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html {
+  font: 400 14px/1.3 "Poppins";
+  background: #333;
+}
+body {
+  padding-top: 3.5rem;
+}
+
+.grid {
+  max-width: 992px;
+  margin: 0 auto;
+  font-size: 0;
+}
+
+.cell {
+  display: block;
+  font-size: 16px;
+  font-size: 1rem;
+  position: relative;
+}
+
+/*
+  This is the first key to making squares!
+  The padding value of 100% equates 100% of the parent's width,
+  which means that as long as we position the content of the
+  square absolutely and take it out of flow, it will appear as a
+  perfect square.
+*/
+.cell:after {
+  padding-bottom: 100%;
+  display: block;
+  content: '';
+}
+
+/*
+  Here's the second key: the content element is where you'll put
+  your video, your text, or whatever.
+  This needs to stretch to fill the parent, which you can do
+  either by using height: 100%; width: 100%, or, for more precise
+  control, use top/left/bottom/right like so:
+*/
+.content {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  right: 1rem;
+  bottom: 1rem;
+  padding: 1rem;
+  overflow: hidden; /* <-- THIS IS CRUCIAL IF YOU INTEND TO PUT VIDEOS OR IMAGES IN SQUARELY */
+}
+
+.content p {
+  color: #fefefe;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: .5em;
+  right: .5em;
+  margin: 0;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.content a,.disclaimer a {
+  color: goldenrod;
+  text-decoration: none;
+}
+
+.content._empty {
+  border: 1px dashed #fff;
+  transition: .3s cubic-bezier(.4,0,.2,1) border-color;
+}
+
+.content._empty:hover {
+  border-color: goldenrod
+}
+
+/*
+  To make the video appear squarely, first center it with the
+  good ol' top/left/transformX/Y trick, then set
+  `max-width: 100%; min-height: 100%` if your videos are landscape
+  aspect-ratio and vice versa for portrait videos.
+  If your content is going to be unpredictable in aspect-ratio, you
+  could use JavaScript for this bit, or emit size-specific CSS classes in
+  your server-side templates if you're not making an SPA.
+*/
+.content > video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  max-width: 100%;
+  min-height: 100%;
+  /*
+    You can also use object-fit: cover; object-position: center;
+    instead of the position/transform hack, but IE doesn't support this,
+    and pre-iOS10 Safari doesn't support object-position, so:
+  */
+}
+
+h1, h2 {
+  color: #fefefe;
+  text-align: center;
+  padding: 0 1em;
+}
+
+h1 {
+  margin: 3rem auto .5em;
+}
+
+h2 {
+  font-size: 16px;
+  font-weight: 400;
+  margin: 0 auto 1.5em;
+}
+
+.disclaimer {
+  position: fixed;
+  left: 1.5rem;
+  right: 1.5rem;
+  top: 1.5rem;
+  padding: .5em;
+  font-size: 13px;
+  background: #000;
+  color: #fff;
+  z-index: 9000;
+}
+
+@media (min-width: 580px){
+  .cell {
+    display: inline-block;
+    width: 50%;
+  }
+}
+
+@media (min-width: 768px){
+  .cell {
+    width: 33.3333%;
+    width: -webkit-calc(100% / 3);
+    width: -moz-calc(100% / 3);
+    width: calc(100% / 3);
+  }
+  .disclaimer {
+    right: 70%;
+  }
+}
+    </style>
+    <script>
+    /* You DO need JavaScript to play and pause videos.
+   However, you don't need jQuery */
+
+document.body.addEventListener('mouseover',function(e){
+  var evt = (e.target || this);
+  if (evt.tagName.toLowerCase() === 'video'){
+    !!(evt.paused) && evt.play();
+  }
+});
+
+document.body.addEventListener('mouseout',function(e){
+  var evt = (e.target || this);
+  if (evt.tagName.toLowerCase() === 'video'){
+    !(evt.paused) && evt.pause();
+  }
+});
+
+    </script>
